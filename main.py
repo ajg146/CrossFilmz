@@ -5,6 +5,7 @@ app = Flask(__name__)
 # Routing! Whatever app.route() contains is the href of a link, the end of the URL.
 
 @app.route('/')
+
 def main():
 	return render_template("index.html", page_title="CrossFilmz")
 
