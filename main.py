@@ -5,6 +5,7 @@ app = Flask(__name__)
 # Right now the login is the root page
 # We might want to allow users access to the site without logging in
 @app.route('/')
+
 def main():
 	return render_template("index.html", page_title="CrossFilmz")
 
