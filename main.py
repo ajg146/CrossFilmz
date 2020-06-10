@@ -2,13 +2,13 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Right now the login is the root page
-# We might want to allow users access to the site without logging in
+# Routing! Whatever app.route() contains is the href of a link, the end of the URL.
+
 @app.route('/')
 def main():
 	return render_template("index.html", page_title="CrossFilmz")
 
-@app.route("/login.html")
+@app.route("/login")
 def login():
 	return render_template("login.html", page_title="CrossFilmz Login")
 
