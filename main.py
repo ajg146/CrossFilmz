@@ -13,6 +13,10 @@ def main():
 def login():
 	return render_template("login.html", page_title="CrossFilmz Login")
 
+@app.route("/search")
+def login():
+	return render_template("search.html", page_title="CrossFilmz")
+
 # For local testing
 if __name__ == "__main__":
 	app.run(host="127.0.0.1", port=8080, debug=True)
