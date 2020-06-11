@@ -9,6 +9,7 @@ th, td {
 
 .centerd {
 	text-align: center;
+	margin: auto;
 }
 
 nav { /* nav bar */
