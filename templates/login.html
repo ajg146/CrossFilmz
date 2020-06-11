@@ -7,10 +7,14 @@
 {% endblock %}
 
 {% block body_content %}
-	<div class="centered">
+	<div style="text-align: center;">
 		<h1>Log in with Google</h1>
-
-		<div class="centered"><div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></div>
+		
+		<!-- 120px is experimentally the width of this sign in button -->
+		<!-- if anyone could figure out a more robust way to center this... -->
+		<div style="width: 120px; margin: auto;">
+			<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+		</div>
 		<script>
 			function onSignIn(googleUser) {
 				// Useful data for your client-side scripts:
