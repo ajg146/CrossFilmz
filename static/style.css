@@ -7,6 +7,10 @@ th, td {
 }
 */
 
+.centerd {
+	text-align: center;
+}
+
 nav { /* nav bar */
     background-color: #575D73;
     position: absolute;
