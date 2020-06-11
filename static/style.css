@@ -21,13 +21,12 @@ nav { /* nav bar */
     padding-bottom: 10px;
 }
 
-nav img { /* images inside nav tags */
-	margin-left: 20px;
+nav table { /* tables inside nav tags */
+    width: 90%;
+	margin: auto;
+    margin-top: -3px;
 }
 
-nav table { /* tables inside nav tags */
-    width: 100%;
-}
 nav table .linkOption { /* class linkOption in those tables */
     width: 80px;
     text-align: center;
@@ -37,4 +36,18 @@ nav table .linkOption { /* class linkOption in those tables */
 body {
 	color: black;
     background-color: lavender;
+}
+
+a:link {
+	color: black;
+	/* text-decoration: none; */
+}
+a:visited {
+	color: black;
+}
+a:hover {
+	color: #222;
+}
+a:active {
+	color: #222;
 }
