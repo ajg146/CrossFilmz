@@ -10,8 +10,8 @@
   "scripts": {
     "start": "react-scripts start",
     "start-app": "cd src/backend && flask run --no-debugger",
+    "test": "jest",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:5000",

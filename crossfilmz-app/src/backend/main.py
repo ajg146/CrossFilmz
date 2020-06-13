@@ -8,14 +8,6 @@ app = Flask(__name__)
 def main_page():
 	return render_template("index.html", page_title="CrossFilmz")
 
-@app.route("/login")
-def login_page():
-	return render_template("login.html", page_title="CrossFilmz Login")
-
-@app.route("/search")
-def search_page():
-	return render_template("search.html", page_title="CrossFilmz")
-
 # For local testing
 if __name__ == "__main__":
 	app.run(host="127.0.0.1", port=8080, debug=True)
