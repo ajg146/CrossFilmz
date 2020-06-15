@@ -3,15 +3,16 @@ import ReactDOM from "react-dom";
 import Hello from "./components/Hello";
 import Search from "./components/Search";
 import MovieCard from "./components/MovieCard";
+import Recomend from "./components/Recomend";
+import Rating from "./components/Rating";
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Search></Search>
         <MovieCard></MovieCard>
-        <h1>Hello, React!</h1>
-        <Hello></Hello>
-        <img src="crossfilmz-app/src/static/media/logo.png"></img>
+        <Recomend></Recomend>
+ 
       </div>
     );
   }
