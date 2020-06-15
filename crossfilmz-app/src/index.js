@@ -11,6 +11,7 @@ class App extends Component {
         <MovieCard></MovieCard>
         <h1>Hello, React!</h1>
         <Hello></Hello>
+        <img src="crossfilmz-app/src/static/media/logo.png"></img>
       </div>
     );
   }

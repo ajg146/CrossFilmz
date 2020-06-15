@@ -23,8 +23,8 @@ export default function ImgMediaCard() {
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
-          height="140"
-          image="crossfilmz-app/src/static/media/logo.png"
+          height="500"
+          image="https://upload.wikimedia.org/wikipedia/en/8/8b/Django_Unchained_Poster.jpg"
           title="Contemplative Reptile"
         />
         <CardContent>
