@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 class Search extends React.Component {
   render() {
     return (
-      <div class="search">
+      <div className="search">
         <Autocomplete
           id="combo-box-demo"
           options={top100Films}
