@@ -4,9 +4,12 @@
 tag_list = ['action', 'drama', 'romance', 'mystery']
 
 class Movie:
-    def __init__(self, title, given_tags):
+    def __init__(self, title, given_tags=None, available_platforms=None):
         self.title = title
-        self.tags = {}
+        self.tags = []
+        self.availability = []
 
-        for tag in tag_list:
-            self.tags[tag] = 1 if tag in given_tags else 0
+        if given_tags is not None:
+            self.tags = [tag for tag in given_tags]
+        if available_platforms is not None:
+            self.availability = [platform for platform in available_platforms]

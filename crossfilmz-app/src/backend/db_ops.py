@@ -48,9 +48,10 @@ def add_movie(movie):
     if cur.fetchone() is None:
         sql_command = """
             INSERT INTO movies
-            (title, tags)
-            VALUES (?, ?)"""
-        cur.execute(sql_command, (movie.title, repr(movie.tags)))
+            (title, tags, availability)
+            VALUES (?, ?, ?)"""
+        cur.execute(sql_command, (movie.title, repr(movie.tags),
+                                  repr(movie.availability)))
 
     close_db_conn(conn)
 
@@ -59,8 +60,10 @@ def main():
     # user = User('testuser')
     # add_user(user)
 
-    # movie = Movie('testmovie', ['action', 'mystery'])
-    # add_movie(movie)
+    movie = Movie('testmovie', ['action', 'mystery'])
+    add_movie(movie)
+    movie2 = Movie('testmovie2', ['drama'], ['netflix, hulu'])
+    add_movie(movie2)
 
 if __name__ == "__main__":
     main()
