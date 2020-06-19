@@ -5,14 +5,22 @@ import Search from "./components/Search";
 import MovieCard from "./components/MovieCard";
 import Recomend from "./components/Recomend";
 import Rating from "./components/Rating";
+import Drawer from "./components/Drawer";
+import Avatar from "./components/Avatar";
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search></Search>
-        <MovieCard></MovieCard>
-        <Recomend></Recomend>
- 
+        <Drawer />
+
+        {/* <Search></Search>
+        <div>
+          <MovieCard></MovieCard>
+          <MovieCard></MovieCard>
+          <MovieCard></MovieCard>
+        </div>
+        <Recomend></Recomend> */}
       </div>
     );
   }
