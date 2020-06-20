@@ -26,8 +26,6 @@ class User:
         db_ops.close_db_conn(conn)
 
     def add_rating(self, movie, score):
-        conn, cur = db_ops.open_db_conn()
-
         if score < MIN_SCORE or score > MAX_SCORE:
             return # Make this be a more informative exception
 
@@ -40,7 +38,8 @@ class User:
                 self.vector[tag] += (self.vector[tag] - previous_rating)
         self.ratings[movie.title] = score
 
-        db_ops.close_db_conn(conn)
+    def get_ratings(self):
+        return self.ratings
 
     def __init__(self, login):
         self.login = login
