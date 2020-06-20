@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- Universal code goes here -->
+<html>
+	<head>
+		<title>{{ page_title }}</title>
+		<link rel="icon" href="static/media/faviconSparkle.png" />
+		<link rel="stylesheet" href="static/style.css" />
+		<meta name="application-name" content="CrossFilmz" />
+		<meta name="description" content="CrossFilmz is a cross-platform movie recommendation tool developed for CS 1530." />
+		<meta name="keywords" content="CrossFilmz, CS 1530, Software Engineering, Movies & Music, Movies, Movie Recommendations" />
+		{% block head_content %}{% endblock %}
+	</head>
+	<body>
+        <br />
+        <br /> <!-- Approximately the space nav takes up -->
+        <br />
+        <br />
+        <nav>
+		    <table>
+                <tr>
+                    <td><a href="/"><img src="static/media/logoSparkle.png" width="120px" height="66.6857px" alt="CrossFilmz" /></a></td>
+                    <td class="linkOption"><a href="search">Search</a></td>
+                    <!-- If not logged in... (check OAuth in python/flask before rendering this to pass the correct boolean) -->
+                        <td class="linkOption"><a href="login">Log In!</a></td>
+                    <!-- Else display your profile picture -->
+                </tr>
+            </table>
+		</nav>
+        {% block body_content %}{% endblock %}
+        <p>Let's test long pages!!!!<br />L<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />o<br />nnnggggggggggggggggggggg!!!!<br /><br /><br /><br /><br />This is a very obtrusive place holder.<br />you're welcome<br /><br /></p>
+	</body>
+</html>
