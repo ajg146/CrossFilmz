@@ -31,11 +31,16 @@ class User:
 
         if movie.title not in self.ratings:
             for tag in movie.tags:
-                self.vector[tag] = self.vector[tag] + score if tag in self.vector else score
+                self.vector[tag] = (self.vector[tag] *
+                                    self.rating_count + score) / \
+                                    (self.rating_count + 1) \
+                                    if tag in self.vector else score
+            self.rating_count += 1
         else:
             previous_rating = self.ratings[movie.title]
-            for tag in movie.tags:
-                self.vector[tag] += (self.vector[tag] - previous_rating)
+            for tag in movie.tags:)
+                self.vector[tag] += (score - previous_rating) / \
+                                    self.rating_count
         self.ratings[movie.title] = score
 
     def get_ratings(self):
@@ -45,15 +50,19 @@ class User:
         self.login = login
         self.vector = {}
         self.ratings = {}
+        self.rating_count = 0
         self.add_user_to_db()
 
-# Using for testing
-def main():
-    user = User('aep67')
-    movie = Movie('testmovie', ['action', 'drama'])
-    user.add_rating(movie, 2)
-    movie2 = Movie('other', ['action', 'comedy'])
-    user.add_rating(movie2, 5)
 
-if __name__ == "__main__":
-    main()
+# def main():
+#     user = User('aep67')
+#     movie = Movie('testmovie', ['action', 'drama'])
+#     user.add_rating(movie, 2)
+#     movie2 = Movie('other', ['action', 'comedy'])
+#     user.add_rating(movie2, 5)
+#     user.add_rating(movie, 3)
+#     print(user.ratings)
+#     print(user.vector)
+#
+# if __name__ == "__main__":
+#     main()
