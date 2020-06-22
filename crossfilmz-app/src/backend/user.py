@@ -38,7 +38,7 @@ class User:
             self.rating_count += 1
         else:
             previous_rating = self.ratings[movie.title]
-            for tag in movie.tags:)
+            for tag in movie.tags:
                 self.vector[tag] += (score - previous_rating) / \
                                     self.rating_count
         self.ratings[movie.title] = score
