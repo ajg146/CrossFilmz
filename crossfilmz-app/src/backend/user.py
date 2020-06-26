@@ -2,7 +2,7 @@ import sqlite3
 import db_ops
 from movie import Movie
 
-MIN_SCORE = 1 # maybe put these in their own file so frontend can reference them too
+MIN_SCORE = 1
 MAX_SCORE = 5
 
 
@@ -47,11 +47,7 @@ class User:
         return self.ratings
 
     def get_recs(self):
-        netflix_recs = {}
-        hulu_recs = {}
-        amazon_recs = {}
-        disney_recs = {}
-        # {'movie.title': user_score}
+        recs = {'netflix': {}, 'hulu': {}, 'amazon': {}, 'disney': {}}
 
         conn, cur = db_ops.open_db_conn()
         sql_command = """
@@ -62,20 +58,22 @@ class User:
 
         for movie in movies:
             movie_score = 0
-            tags = movie[1]
-            platforms = movie[2]
+            title = movie[0]
+            tags = movie[1].strip('][').split(', ')
+            platforms = movie[2].strip('][').split(', ')
 
             for tag in tags:
+                tag = tag.strip('\'')
                 if tag in self.vector:
                     movie_score += self.vector[tag]
                 else:
                     movie_score += 2.5
 
-            # For platform in platforms, see if it makes the top 10 scores
+            for platform in platforms:
+                platform = platform.strip('\'')
+                recs[platform][title] = movie_score
 
-        # When done check its availability and put it in the appropriate symbol tables
-        # ----- Maybe have to use a hashmap or something to store everything
-        return [netflix_recs, hulu_recs, amazon_recs, disney_recs]
+        return recs
 
     def __init__(self, login):
         self.login = login
@@ -86,15 +84,22 @@ class User:
 
 
 def main():
+    # Note: Currently it is necessary to add movies to the db from here as
+    #       opposed to manually entering them in the db. Otherwise, some
+    #       annoying escape characters get added to the input string
+    #       which are annoying to remove
+
+    # Maybe better to return all movies with recs and then order them later?
+
     user = User('aep67')
-    movie = Movie('testmovie', ['action', 'drama'])
+    movie = Movie('testmovie', ['action', 'drama'], ['netflix', 'hulu'])
     user.add_rating(movie, 2)
-    movie2 = Movie('other', ['action', 'comedy'])
+    movie2 = Movie('other', ['action', 'comedy'], ['disney', 'amazon'])
     user.add_rating(movie2, 5)
     user.add_rating(movie, 3)
     print(user.ratings)
     print(user.vector)
-    user.get_recs()
+    print(user.get_recs())
 
 if __name__ == "__main__":
     main()

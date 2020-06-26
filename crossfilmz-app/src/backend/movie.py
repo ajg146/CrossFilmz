@@ -1,8 +1,6 @@
 import sqlite3
 import db_ops
-# will have to be big list of all possible tags we get (probably by scraping)
-# might be useful to put this in a separate file
-tag_list = ['action', 'drama', 'romance', 'mystery']
+
 
 class Movie:
     def add_movie_to_db(self):
@@ -35,10 +33,3 @@ class Movie:
             self.availability = [platform for platform in available_platforms]
 
         self.add_movie_to_db()
-
-# Using for testing
-def main():
-    movie = Movie('testmovieieieieiei')
-
-if __name__ == "__main__":
-    main()
