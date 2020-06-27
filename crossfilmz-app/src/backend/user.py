@@ -70,7 +70,9 @@ class User:
                     movie_score += 2.5
 
             for platform in platforms:
-                platform = platform.strip('\'')
+                # These strips shouldn't cause any issues, but be sure to check
+                # them if any bugs arise
+                platform = platform.strip('\r').strip(']\n').strip('\'')
                 recs[platform][title] = movie_score
 
         return recs
@@ -84,14 +86,7 @@ class User:
 
 
 def main():
-    # Note: Currently it is necessary to add movies to the db from here as
-    #       opposed to manually entering them in the db. Otherwise, some
-    #       annoying escape characters get added to the input string
-    #       which are annoying to remove
-
-    # Maybe better to return all movies with recs and then order them later?
-
-    user = User('aep67')
+    user = User('testuser')
     movie = Movie('testmovie', ['action', 'drama'], ['netflix', 'hulu'])
     user.add_rating(movie, 2)
     movie2 = Movie('other', ['action', 'comedy'], ['disney', 'amazon'])
