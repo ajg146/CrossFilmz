@@ -13,12 +13,18 @@ def main_page():
 @app.route('/add_movie', methods=['POST'])
 def add_movie():
     movie_data = request.get_json()
-    newMovie = Movie(movie_data['title'],
-                     movie_data['genre'], movie_data['platform'])
-    Movie.add_movie_to_db(newMovie)
+    Movie(movie_data['title'],
+          movie_data['genre'],
+          movie_data['platform']
+          )
     return 'Done', 201
 
 
-# For local testing
-if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=True)
+@app.route('/get_movies', methods=['GET'])
+def get_movies():
+    Movie.select_all_movies()
+    return 'Done', 201
+
+    # For local testing
+    if __name__ == "__main__":
+    	app.run(host="127.0.0.1", port=8080, debug=True)
