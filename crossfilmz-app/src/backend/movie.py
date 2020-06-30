@@ -22,7 +22,6 @@ class Movie:
 
         db_ops.close_db_conn(conn)
 
-
     @staticmethod
     def select_all_movies():
         conn, cur = db_ops.open_db_conn()
