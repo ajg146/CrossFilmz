@@ -57,6 +57,8 @@ class User:
         db_ops.close_db_conn(conn)
 
         for movie in movies:
+            if movie in self.ratings:
+                continue
             movie_score = 0
             title = movie[0]
             tags = movie[1].strip('][').split(', ')
@@ -87,9 +89,9 @@ class User:
 
 def main():
     user = User('testuser')
-    movie = Movie('testmovie', ['action', 'drama'], ['netflix', 'hulu'])
+    movie = Movie('testmovie', ['Action', 'Drama'], ['Netflix', 'Hulu'])
     user.add_rating(movie, 2)
-    movie2 = Movie('other', ['action', 'comedy'], ['disney', 'amazon'])
+    movie2 = Movie('other', ['Action', 'Comedy'], ['Disney+', 'Amazon Instant Video'])
     user.add_rating(movie2, 5)
     user.add_rating(movie, 3)
     print(user.ratings)
