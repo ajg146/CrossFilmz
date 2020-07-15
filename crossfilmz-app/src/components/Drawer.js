@@ -17,8 +17,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import MovieCard from "./MovieCard";
 import Search from "./Search";
-import Shelf from "./Shelf";
 import Avatar from "./Avatar";
 import LoginIcon from "./LoginIcon";
 import AllInclusiveIcon from "@material-ui/icons/AllInclusive";
@@ -170,7 +170,7 @@ export default function MiniDrawer() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <div>
-          <Shelf />
+          <MovieCard />
         </div>
       </main>
     </div>
