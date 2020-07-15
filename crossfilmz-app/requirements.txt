@@ -4,7 +4,7 @@ atomicwrites==1.4.0
 attrs==19.1.0
 Authlib==0.14.1
 backcall==0.1.0
-bleach==3.1.0
+bleach==3.1.4
 certifi==2020.4.5.1
 cffi==1.14.0
 chardet==3.0.4
