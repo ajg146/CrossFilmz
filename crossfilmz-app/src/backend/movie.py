@@ -36,7 +36,7 @@ class Movie:
             title = r[0]
             genre = r[1]
             platforms = r[2]
-        
+
         return rows
 
     def __init__(self, title, given_tags=None, available_platforms=None):
