@@ -24,7 +24,6 @@ class Movie:
 
     @staticmethod
     def select_all_movies():
-        print('here')
         conn, cur = db_ops.open_db_conn()
         sql_command = """
             SELECT *

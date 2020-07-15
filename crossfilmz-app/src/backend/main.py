@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from movie import Movie
 from flask_cors import CORS
 
@@ -90,7 +90,8 @@ def add_movie():
 
 @app.route('/get_movies', methods=['GET'])
 def get_movies():
-    return Movie.select_all_movies(), 'Done', '201'
+    return jsonify(Movie.select_all_movies())
+    # return Movie.select_all_movies(), 'Done', '201'
 
 
 # For local testing
