@@ -1,7 +1,6 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 import "../basic-grid.css";
-import sample from "./sample_response.json";
 import shortid from "shortid";
 
 class Shelf extends React.Component {
