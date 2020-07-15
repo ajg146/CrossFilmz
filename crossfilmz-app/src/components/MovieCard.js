@@ -34,8 +34,10 @@ export default function ImgMediaCard(props) {
             {props.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.platform}
-            {props.tags}
+            <ul>
+              <li>{props.platform}</li>
+              <li>{props.tags}</li>
+            </ul>
           </Typography>
         </CardContent>
       </CardActionArea>
