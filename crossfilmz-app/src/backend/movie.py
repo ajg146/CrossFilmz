@@ -1,8 +1,6 @@
 import sqlite3
 import db_ops
-# will have to be big list of all possible tags we get (probably by scraping)
-# might be useful to put this in a separate file
-tag_list = ['action', 'drama', 'romance', 'mystery']
+
 
 class Movie:
     def add_movie_to_db(self):
@@ -33,8 +31,12 @@ class Movie:
         cur.execute(sql_command)
 
         rows = cur.fetchall()
-        # for r in rows:
-        #     print(r)
+        d = {}
+        for r in rows:
+            title = r[0]
+            genre = r[1]
+            platforms = r[2]
+
         return rows
 
     def __init__(self, title, given_tags=None, available_platforms=None):
@@ -48,10 +50,3 @@ class Movie:
             self.availability = [platform for platform in available_platforms]
 
         self.add_movie_to_db()
-
-# Using for testing
-def main():
-    movie = Movie('testmovieieieieiei')
-
-if __name__ == "__main__":
-    main()
