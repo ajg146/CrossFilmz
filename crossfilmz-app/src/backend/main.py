@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from movie import Movie
 
 app = Flask(__name__)
@@ -15,6 +15,11 @@ def main_page():
 def test():
     return "test"
 
+@app.route('/get_movies', methods=['GET'])
+def get_movies():
+    movies = Movie.select_all_movies()
+    return jsonify(movies)
+    # return jsonify(title=movies[0], tags=movies[1], platforms=movies[2])
 
 # For local testing
 if __name__ == "__main__":
