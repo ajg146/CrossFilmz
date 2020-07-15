@@ -22,6 +22,19 @@ class Movie:
 
         db_ops.close_db_conn(conn)
 
+    @staticmethod
+    def select_all_movies():
+        conn, cur = db_ops.open_db_conn()
+        sql_command = """
+            SELECT *
+            FROM movies"""
+        cur.execute(sql_command)
+
+        rows = cur.fetchall()
+        # for r in rows:
+        #     print(r)
+        return rows
+
     def __init__(self, title, given_tags=None, available_platforms=None):
         self.title = title
         self.tags = []
