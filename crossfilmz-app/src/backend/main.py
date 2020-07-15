@@ -92,6 +92,7 @@ def add_movie():
 def get_movies():
     return Movie.select_all_movies(), 'Done', '201'
 
-    # For local testing
-    if __name__ == "__main__":
-        app.run(host="127.0.0.1", port=8080, debug=True)
+
+# For local testing
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=8080, debug=True)
