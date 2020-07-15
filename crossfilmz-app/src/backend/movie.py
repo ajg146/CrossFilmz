@@ -26,6 +26,7 @@ class Movie:
 
     @staticmethod
     def select_all_movies():
+        print('here')
         conn, cur = db_ops.open_db_conn()
         sql_command = """
             SELECT *
@@ -51,7 +52,7 @@ class Movie:
 
 # Using for testing
 def main():
-    movie = Movie('testmovieieieieiei')
+    print(Movie.select_all_movies())
 
 if __name__ == "__main__":
     main()
