@@ -21,6 +21,9 @@ import MovieCard from "./MovieCard";
 import Search from "./Search";
 import Avatar from "./Avatar";
 import LoginIcon from "./LoginIcon";
+import AllInclusiveIcon from "@material-ui/icons/AllInclusive";
+import ApiButton from "./ApiButton";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -150,14 +153,7 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
-          {["Netlix", "Prime", "Disney+", "Hulu"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ApiButton text="Netflix" />
         </List>
         <Divider />
         <List>
