@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from movie import Movie
+from flask_cors import CORS
 
 
 from authlib.integrations.flask_client import OAuth
@@ -15,6 +16,7 @@ load_dotenv()
 
 
 app = Flask(__name__)
+cors = CORS(app)
 # Session config
 app.secret_key = os.getenv("APP_SECRET_KEY")
 app.config['SESSION_COOKIE_NAME'] = 'google-login-session'
@@ -88,8 +90,7 @@ def add_movie():
 
 @app.route('/get_movies', methods=['GET'])
 def get_movies():
-    Movie.select_all_movies()
-    return 'Done', 201
+    return Movie.select_all_movies(), 'Done', '201'
 
     # For local testing
     if __name__ == "__main__":

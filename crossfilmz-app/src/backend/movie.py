@@ -31,9 +31,8 @@ class Movie:
         cur.execute(sql_command)
 
         rows = cur.fetchall()
-        for each_row in rows:
-            print(each_row)
-
+        for r in rows:
+            print(r)
         return rows
 
     def __init__(self, title, given_tags=None, available_platforms=None):
