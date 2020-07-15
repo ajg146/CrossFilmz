@@ -31,8 +31,12 @@ class Movie:
         cur.execute(sql_command)
 
         rows = cur.fetchall()
-        # for r in rows:
-        #     print(r)
+        d = {}
+        for r in rows:
+            title = r[0]
+            genre = r[1]
+            platforms = r[2]
+
         return rows
 
     def __init__(self, title, given_tags=None, available_platforms=None):
@@ -45,4 +49,15 @@ class Movie:
         if available_platforms is not None:
             self.availability = [platform for platform in available_platforms]
 
+<<<<<<< HEAD
         self.add_movie_to_db()
+=======
+        self.add_movie_to_db()
+
+# Using for testing
+def main():
+    print(Movie.select_all_movies())
+
+if __name__ == "__main__":
+    main()
+>>>>>>> 59f32d4313a0cd1ff62ece8e21db76dd06413934

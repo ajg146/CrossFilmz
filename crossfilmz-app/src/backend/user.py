@@ -42,6 +42,7 @@ class User:
                 self.vector[tag] += (score - previous_rating) / \
                                     self.rating_count
         self.ratings[movie.title] = score
+<<<<<<< HEAD
 
     def get_ratings(self):
         return self.ratings
@@ -76,6 +77,44 @@ class User:
                 recs[platform][title] = movie_score
 
         return recs
+=======
+
+    def get_ratings(self):
+        return self.ratings
+
+    def get_recs(self):
+        recs = {'netflix': {}, 'hulu': {}, 'amazon': {}, 'disney': {}}
+
+        conn, cur = db_ops.open_db_conn()
+        sql_command = """
+            SELECT * FROM movies"""
+        cur.execute(sql_command)
+        movies = cur.fetchall()
+        db_ops.close_db_conn(conn)
+>>>>>>> 59f32d4313a0cd1ff62ece8e21db76dd06413934
+
+        for movie in movies:
+            if movie in self.ratings:
+                continue
+            movie_score = 0
+            title = movie[0]
+            tags = movie[1].strip('][').split(', ')
+            platforms = movie[2].strip('][').split(', ')
+
+            for tag in tags:
+                tag = tag.strip('\'')
+                if tag in self.vector:
+                    movie_score += self.vector[tag]
+                else:
+                    movie_score += 2.5
+
+            for platform in platforms:
+                # These strips shouldn't cause any issues, but be sure to check
+                # them if any bugs arise
+                platform = platform.strip('\r').strip(']\n').strip('\'')
+                recs[platform][title] = movie_score
+
+        return recs
 
     def __init__(self, login):
         self.login = login
@@ -87,9 +126,15 @@ class User:
 
 def main():
     user = User('testuser')
+<<<<<<< HEAD
     movie = Movie('testmovie', ['action', 'drama'], ['netflix', 'hulu'])
     user.add_rating(movie, 2)
     movie2 = Movie('other', ['action', 'comedy'], ['disney', 'amazon'])
+=======
+    movie = Movie('testmovie', ['Action', 'Drama'], ['Netflix', 'Hulu'])
+    user.add_rating(movie, 2)
+    movie2 = Movie('other', ['Action', 'Comedy'], ['Disney+', 'Amazon Instant Video'])
+>>>>>>> 59f32d4313a0cd1ff62ece8e21db76dd06413934
     user.add_rating(movie2, 5)
     user.add_rating(movie, 3)
     print(user.ratings)
