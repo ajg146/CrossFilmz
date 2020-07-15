@@ -10,19 +10,14 @@ class ApiButton extends React.Component {
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
-    this.setState({ person: data.results[0], loading: false });
   }
   render() {
     return (
       <ListItem
         button
         key={this.props.text}
-        onClick={async () => {
+        onClick={() => {
           //const url = "http://localhost:8080/recipes";
-          const url = "http://numbersapi.com/42/trivia";
-          const response = await fetch(url);
-          const data = await response.json();
-          console.log(data);
         }}
       >
         <ListItemIcon>
