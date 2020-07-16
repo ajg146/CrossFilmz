@@ -36,7 +36,22 @@ class Movie:
             title = r[0]
             genre = r[1]
             platforms = r[2]
-        
+
+        return rows
+
+    @staticmethod
+    def select_some_movies(platforms):
+        rows = []
+        conn, cur = db_ops.open_db_conn()
+
+        for platform in platforms:
+            sql_command  = """
+                SELECT *
+                FROM movies
+                WHERE availability=?"""
+            cur.execute(sql_command, (platform))
+            rows.append(cur.fetchall())
+
         return rows
 
     def __init__(self, title, given_tags=None, available_platforms=None):

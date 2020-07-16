@@ -37,9 +37,13 @@ google = oauth.register(
     client_kwargs={'scope': 'openid email profile'},
 )
 
+user_map = {}
+movie_map = {}
+valid_platforms = ['Netflix', 'Hulu', 'Amazon Instant Video', 'Disney+']
+
+
+
 # Routing! Whatever app.route() contains is the href of a link, the end of the URL.
-
-
 @app.route('/')
 @login_required
 def hello_world():
@@ -77,22 +81,60 @@ def logout():
         session.pop(key)
     return redirect('/')
 
+@app.route('/add_user', methods=['POST'])
+def add_user():
+    user_data = request.get_json()
+    user = User(user_data['login'])
+    user_map[user_data['login']] = user
+    return 'Done', 201
+
 
 @app.route('/add_movie', methods=['POST'])
 def add_movie():
     movie_data = request.get_json()
-    Movie(movie_data['title'],
-          movie_data['genre'],
-          movie_data['platform']
-          )
+    movie = Movie(movie_data['title'], movie_data['genre'],
+                  movie_data['platform'])
+    movie_map[movie_data['title']] = movie
     return 'Done', 201
 
 
 @app.route('/get_movies', methods=['GET'])
-def get_movies():
+def get_movies(platforms=None):
+    # Filtering the grid (if we want to be able to do that)
+    if platforms is not None:
+        return jsonify(Movie.select_some_movies(platforms))
+
     return jsonify(Movie.select_all_movies())
     # return Movie.select_all_movies(), 'Done', '201'
 
+@app.route('/add_rating', methods=['GET'])
+# Could also just pass the entire movie object here if that's possible
+# If so, there wouldn't be a need for the movie map
+def add_rating(user_login, movie_title, score):
+    user = user_map[user_login]
+    movie = movie_map[movie_title]
+    user.add_rating(movie, score)
+
+    return 'Done', 201
+
+@app.route('/get_recs', methods=['GET'])
+def get_recs(user_login):
+    user = user_map(user_login)
+    user_recs = user.get_recs()
+
+    return jsonify(user_recs)
+
+@app.route('/filter_recs', methods=['GET'])
+def filter_recs(user_login, platforms):
+    for platform in platforms:
+        if platform not in valid_platforms:
+            return 'Invalid Platform', 500
+
+    user = user_map(user_login)
+    user_recs = user.get_recs()
+    filtered_recs = user.filter_recs(user_recs, platforms)
+
+    return jsonify(filtered_recs)
 
 # For local testing
 if __name__ == "__main__":

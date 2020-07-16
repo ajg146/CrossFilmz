@@ -47,7 +47,7 @@ class User:
         return self.ratings
 
     def get_recs(self):
-        recs = {'netflix': {}, 'hulu': {}, 'amazon': {}, 'disney': {}}
+        recs = {'Netflix': {}, 'Hulu': {}, 'Amazon Instant Video': {}, 'Disney+': {}}
 
         conn, cur = db_ops.open_db_conn()
         sql_command = """
@@ -75,9 +75,18 @@ class User:
                 # These strips shouldn't cause any issues, but be sure to check
                 # them if any bugs arise
                 platform = platform.strip('\r').strip(']\n').strip('\'')
-                recs[platform][title] = movie_score
+                if platform not in recs:
+                    continue
+                recs[platform][movie] = movie_score
 
         return recs
+
+    def filter_recs(self, recs, platforms):
+        filtered_recs = {}
+        for platform in platforms:
+            filtered_recs[platform] = recs[platform]
+
+        return filtered_recs
 
     def __init__(self, login):
         self.login = login
@@ -86,7 +95,6 @@ class User:
         self.rating_count = 0
         self.add_user_to_db()
 
-
 def main():
     user = User('testuser')
     movie = Movie('testmovie', ['Action', 'Drama'], ['Netflix', 'Hulu'])
@@ -94,9 +102,12 @@ def main():
     movie2 = Movie('other', ['Action', 'Comedy'], ['Disney+', 'Amazon Instant Video'])
     user.add_rating(movie2, 5)
     user.add_rating(movie, 3)
-    print(user.ratings)
-    print(user.vector)
-    print(user.get_recs())
+    recs = user.get_recs()
+    print('RECS')
+    print(recs)
+    filtered_recs = user.filter_recs(recs, ['Netflix'])
+    print('\n\n\n\nFILTERED_RECS')
+    print(filtered_recs)
 
 if __name__ == "__main__":
     main()
