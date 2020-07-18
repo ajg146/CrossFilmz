@@ -79,6 +79,11 @@ class User:
                     continue
                 recs[platform][movie] = movie_score
 
+        for platform_rec in recs:
+            sorted_platform = sorted(recs[platform_rec].items(),
+                                     key=lambda x: x[1], reverse=True)
+            recs[platform_rec] = sorted_platform
+
         return recs
 
     def filter_recs(self, recs, platforms):
