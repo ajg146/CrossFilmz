@@ -4,7 +4,6 @@ import sqlite3
 import json
 import requests
 
-
 def get_availability(imdb_id):
     url = 'https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/idlookup'
 
