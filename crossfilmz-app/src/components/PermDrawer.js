@@ -49,7 +49,7 @@ class PermDrawer extends React.Component {
     movies: []
   };
   updateMovies = dataFromChild => {
-    //console.log(dataFromChild);
+    console.log(dataFromChild);
     this.setState({ movies: dataFromChild });
   };
   render() {
@@ -74,8 +74,10 @@ class PermDrawer extends React.Component {
           <div className={classes.toolbar} />
           <Divider />
           <List>
-            <ApiButton text="All Movies" updateMovies={this.updateMovies} />
-            <ApiButton text="Netflix" updateMovies={this.updateMovies}/>
+            <ApiButton text="Netflix" updateMovies={this.updateMovies} />
+            <ApiButton text="Amazon" updateMovies={this.updateMovies} />
+            <ApiButton text="Hulu" updateMovies={this.updateMovies} />
+            <ApiButton text="Disney" updateMovies={this.updateMovies} />
           </List>
           <Divider />
           <List></List>

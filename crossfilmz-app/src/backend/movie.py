@@ -42,19 +42,17 @@ class Movie:
 
     @staticmethod
     def select_some_movies(platforms):
-        if isinstance(platforms, str):
-            platforms = [platforms]
-
         rows = []
         conn, cur = db_ops.open_db_conn()
-
+        print(platforms)
         for platform in platforms:
-            query = "SELECT * FROM movies \
-                     WHERE availability LIKE '%{}%'".format(platform)
+            print(platform)
+            query = "SELECT * FROM movies WHERE availability LIKE '%{}%'".format(
+                platform)
+            print(query)
             cur.execute(query)
             rows.append(cur.fetchall())
-
-        return rows
+        return rows[0]
 
     def __init__(self, title, given_tags=None, available_platforms=None):
         self.title = title

@@ -14,8 +14,16 @@ class ApiButton extends React.Component {
         button
         key={this.props.text}
         onClick={async () => {
+          const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              platforms: [this.props.text]
+            })
+          };
+          console.log(requestOptions)
           const url = "http://127.0.0.1:5000/get_movies";
-          const response = await fetch(url);
+          const response = await fetch(url,requestOptions);
           const data = await response.json();
           //console.log(data);
           this.props.updateMovies(data);
