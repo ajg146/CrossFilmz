@@ -46,10 +46,12 @@ class Movie:
         conn, cur = db_ops.open_db_conn()
         print(platforms)
         for platform in platforms:
-            cur.execute("SELECT * FROM movies \
-                         WHERE availability LIKE '%{}%'".format(platform))
+            print(platform)
+            query = "SELECT * FROM movies WHERE availability LIKE '%{}%'".format(
+                platform)
+            print(query)
+            cur.execute(query)
             rows.append(cur.fetchall())
-
         return rows
 
     def __init__(self, title, given_tags=None, available_platforms=None):

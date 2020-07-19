@@ -101,7 +101,7 @@ def add_movie():
 @app.route('/get_movies', methods=['GET', 'POST'])
 def get_movies(platforms=None):
     # Filtering the grid (if we want to be able to do that)
-    platforms = request.get_json()['platform']
+    platforms = request.get_json()['platforms']
     if platforms is not None:
         return jsonify(Movie.select_some_movies(platforms))
 
