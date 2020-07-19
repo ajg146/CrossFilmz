@@ -36,6 +36,7 @@ class Movie:
             title = r[0]
             genre = r[1]
             platforms = r[2]
+            poster = r[3]
 
         return rows
 

@@ -75,7 +75,7 @@ class PermDrawer extends React.Component {
           <Divider />
           <List>
             <ApiButton text="All Movies" updateMovies={this.updateMovies} />
-            <ApiButton text="Netflix" updateMovies={this.updateMovies} />
+            <ApiButton text="Netflix" updateMovies={this.updateMovies}/>
           </List>
           <Divider />
           <List></List>

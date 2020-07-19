@@ -29,7 +29,7 @@ class Shelf extends React.Component {
             title={eachMovie[0]}
             tags={eachMovie[1]}
             platform={eachMovie[2]}
-            poster="https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
+            poster={eachMovie[3]}
           />
         ))}
       </div>
