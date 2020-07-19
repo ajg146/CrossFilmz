@@ -1,6 +1,11 @@
 import sqlite3
 import db_ops
 
+# Print movie titles in a way that's easy to view
+def pretty_print_movies(movies):
+    for movie in movies:
+        print(movie[0])
+
 
 class Movie:
     def add_movie_to_db(self):
@@ -23,6 +28,17 @@ class Movie:
         db_ops.close_db_conn(conn)
 
     @staticmethod
+    def filter_duplicates(rows):
+        new_movies = []
+        for row in rows:
+            for movies in rows:
+                for movie in movies:
+                    if movie not in new_movies:
+                        new_movies.append(movie)
+
+        return new_movies
+
+    @staticmethod
     def select_all_movies():
         conn, cur = db_ops.open_db_conn()
         sql_command = """
@@ -38,21 +54,25 @@ class Movie:
             platforms = r[2]
             poster = r[3]
 
-        return rows
+        db_ops.close_db_conn(conn)
+        return Movie.filter_duplicates(rows)
 
     @staticmethod
     def select_some_movies(platforms):
+        if isinstance(platforms, str):
+            platforms = [platforms]
+
         rows = []
         conn, cur = db_ops.open_db_conn()
-        print(platforms)
+
         for platform in platforms:
-            print(platform)
-            query = "SELECT * FROM movies WHERE availability LIKE '%{}%'".format(
-                platform)
-            print(query)
+            query = "SELECT * FROM movies \
+                     WHERE availability LIKE '%{}%'".format(platform)
             cur.execute(query)
             rows.append(cur.fetchall())
-        return rows[0]
+
+        db_ops.close_db_conn(conn)
+        return Movie.filter_duplicates(rows)
 
     def __init__(self, title, given_tags=None, available_platforms=None):
         self.title = title
@@ -65,3 +85,11 @@ class Movie:
             self.availability = [platform for platform in available_platforms]
 
         self.add_movie_to_db()
+
+# FOR VALIDATION:
+# def main():
+#     pretty_print_movies(Movie.select_some_movies('Netflix'))
+#     pretty_print_movies(Movie.select_some_movies(['Netflix', 'Amazon Instant Video']))
+#
+# if __name__ == "__main__":
+#     main()
