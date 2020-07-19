@@ -44,7 +44,7 @@ class Movie:
     def select_some_movies(platforms):
         rows = []
         conn, cur = db_ops.open_db_conn()
-
+        print(platforms)
         for platform in platforms:
             cur.execute("SELECT * FROM movies \
                          WHERE availability LIKE '%{}%'".format(platform))
@@ -63,4 +63,3 @@ class Movie:
             self.availability = [platform for platform in available_platforms]
 
         self.add_movie_to_db()
-
