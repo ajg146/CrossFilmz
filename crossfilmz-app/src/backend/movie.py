@@ -46,11 +46,8 @@ class Movie:
         conn, cur = db_ops.open_db_conn()
 
         for platform in platforms:
-            sql_command  = """
-                SELECT *
-                FROM movies
-                WHERE availability=?"""
-            cur.execute(sql_command, (platform))
+            cur.execute("SELECT * FROM movies \
+                         WHERE availability LIKE '%{}%'".format(platform))
             rows.append(cur.fetchall())
 
         return rows
@@ -66,3 +63,4 @@ class Movie:
             self.availability = [platform for platform in available_platforms]
 
         self.add_movie_to_db()
+
