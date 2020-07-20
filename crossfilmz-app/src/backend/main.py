@@ -104,7 +104,7 @@ def get_movies(platforms=None):
     platforms = request.get_json()['platforms']
     if platforms is not None:
         return jsonify(Movie.select_some_movies(platforms))
-    
+
     return jsonify(Movie.select_all_movies())
     # return Movie.select_all_movies(), 'Done', '201'
 
