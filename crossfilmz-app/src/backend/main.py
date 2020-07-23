@@ -71,7 +71,7 @@ def authorize():
     session['profile'] = user_info
     # make the session permanant so it keeps existing after broweser gets closed
     session.permanent = True
-    return redirect('/')
+    return redirect("http://localhost:3000/", code=302)
 
 
 @app.route('/logout')
