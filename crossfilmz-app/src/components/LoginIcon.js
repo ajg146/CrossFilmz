@@ -6,7 +6,8 @@ import Avatar from "./Avatar";
 
 class LoginIcon extends React.Component {
   state = {
-    anchorEl: null
+    anchorEl: null,
+    isSignedOn: false
   };
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
