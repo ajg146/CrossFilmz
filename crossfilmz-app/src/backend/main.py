@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from movie import Movie
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 
 from authlib.integrations.flask_client import OAuth
@@ -17,6 +17,8 @@ load_dotenv()
 
 app = Flask(__name__)
 cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 # Session config
 app.secret_key = os.getenv("APP_SECRET_KEY")
 app.config['SESSION_COOKIE_NAME'] = 'google-login-session'
@@ -74,11 +76,14 @@ def authorize():
     return redirect("http://localhost:3000/", code=302)
 
 
-@app.route('/logout')
+@app.route('/logout', methods=['GET'])
+@cross_origin(origin='*')
 def logout():
+    print("in logout method")
     for key in list(session.keys()):
+        print("popping")
         session.pop(key)
-    return redirect('/')
+    return redirect("/", code=302)
 
 
 @app.route('/add_user', methods=['POST'])

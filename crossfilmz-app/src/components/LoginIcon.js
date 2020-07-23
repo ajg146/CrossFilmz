@@ -16,6 +16,12 @@ class LoginIcon extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+  handleLogOut = async () => {
+    this.setState({ anchorEl: null });
+    const url = "http://127.0.0.1:5000/logout";
+    const response = await fetch(url);
+    console.log("logggging out");
+  };
 
   render() {
     return (
@@ -35,7 +41,7 @@ class LoginIcon extends React.Component {
           onClose={this.handleClose}
         >
           <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+          <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
         </Menu>
       </div>
     );
