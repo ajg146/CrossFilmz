@@ -44,7 +44,7 @@ google = oauth.register(
 @login_required
 def hello_world():
     email = dict(session)['profile']['email']
-    return f'Hello, you are logge in as {email}!'
+    return f'Hello, you are logged in as {email}!'
 
 
 @app.route('/login')
