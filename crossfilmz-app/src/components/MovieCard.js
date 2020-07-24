@@ -35,8 +35,8 @@ export default function ImgMediaCard(props) {
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             <ul>
-              <li>{props.platform}</li>
-              <li>{props.tags}</li>
+              <li>{props.tags.replace(/['"]+/g, '')}</li>
+              <li>Available on {props.platform.replace(/['"]+/g, '')}</li>
             </ul>
           </Typography>
         </CardContent>

@@ -18,7 +18,7 @@ class Shelf extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <h1>CLick button to load movies</h1>;
+      return <h1>Click button to load movies</h1>;
     }
     return (
       <div class="basic-grid">
