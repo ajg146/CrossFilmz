@@ -39,11 +39,11 @@ google = oauth.register(
     client_kwargs={'scope': 'openid email profile'},
 )
 
-user_email = ""
+
 user_map = {}
 movie_map = {}
 valid_platforms = ['Netflix', 'Hulu', 'Amazon Instant Video', 'Disney+']
-
+user_email = ""
 
 # Routing! Whatever app.route() contains is the href of a link, the end of the URL.
 @app.route('/')
@@ -73,9 +73,13 @@ def authorize():
     # and set ur own data in the session not the profile from google
     session['profile'] = user_info
     # make the session permanant so it keeps existing after broweser gets closed
+    session.modified = True
     session.permanent = True
+
     email = dict(session)['profile']['email']
+    global user_email
     user_email = email
+    print(user_email)
     if email not in user_map:
         add_user(email)
 
@@ -120,13 +124,16 @@ def get_movies(platforms=None):
 
 
 @app.route('/add_rating', methods=['POST'])
-def add_rating(email=user_email):    
-   # email = dict(session)['profile']['email']
-    user = user_map[email]
+def add_rating():
+    user_email = 'samirsherlekar98@gmail.com'
+    user = user_map[user_email]
     movie_data = request.get_json()
     movie = Movie(movie_data['title'],
                   movie_data['genre'],
                   movie_data['platform'])
+    print(movie.title)
+    print(movie.tags)
+    print(movie.availability)
     user.add_rating(movie, movie_data['score'])
     return 'Done', 201
 
