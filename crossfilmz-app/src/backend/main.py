@@ -134,7 +134,7 @@ def add_rating(user_login, movie_title, score):
 
 @app.route('/get_recs', methods=['GET'])
 def get_recs(user_login):
-    user = user_map(user_login)
+    user = user_map[user_login]
     user_recs = user.get_recs()
 
     return jsonify(user_recs)
