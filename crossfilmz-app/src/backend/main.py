@@ -83,7 +83,7 @@ def logout():
     for key in list(session.keys()):
         print("popping")
         session.pop(key)
-    return redirect("/", code=302)
+    return redirect("/login", code=302)
 
 
 @app.route('/add_user', methods=['POST'])
