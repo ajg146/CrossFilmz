@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from movie import Movie
 from flask_cors import CORS, cross_origin
-
+from user import User
 
 from authlib.integrations.flask_client import OAuth
 import os
@@ -73,6 +73,10 @@ def authorize():
     session['profile'] = user_info
     # make the session permanant so it keeps existing after broweser gets closed
     session.permanent = True
+    email = dict(session)['profile']['email']
+    if email not in user_map:
+        add_user(email)
+
     return redirect("http://localhost:3000/", code=302)
 
 
@@ -86,12 +90,13 @@ def logout():
     return redirect("/login", code=302)
 
 
-@app.route('/add_user', methods=['POST'])
-def add_user():
-    user_data = request.get_json()
-    user = User(user_data['login'])
-    user_map[user_data['login']] = user
-    return 'Done', 201
+# @app.route('/add_user', methods=['POST'])
+def add_user(email):
+    #    user_data = request.get_json()
+    user = User(email)
+    user_map[email] = user
+    print('added user')
+    return 'Done'
 
 
 @app.route('/add_movie', methods=['POST'])
