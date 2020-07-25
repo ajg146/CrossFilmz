@@ -3,6 +3,8 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Avatar from "./Avatar";
+import "../styles/logoutChoice.css"
+
 
 class LoginIcon extends React.Component {
   state = {
@@ -36,7 +38,9 @@ class LoginIcon extends React.Component {
         >
           <MenuItem onClick={this.handleClose}>Profile</MenuItem>
           <MenuItem>
-            <a href="http://127.0.0.1:5000/logout">Logout</a>
+            <a className = "logout" href="http://127.0.0.1:5000/logout">
+              Logout
+            </a>
           </MenuItem>
         </Menu>
       </div>
