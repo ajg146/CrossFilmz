@@ -5,7 +5,6 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Rating from "./Rating";
 
@@ -35,19 +34,14 @@ export default function ImgMediaCard(props) {
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             <ul>
-              <li>{props.tags.replace(/['"]+/g, '')}</li>
-              <li>Available on {props.platform.replace(/['"]+/g, '')}</li>
+              <li>{props.tags.replace(/['"]+/g, "")}</li>
+              <li>Available on {props.platform.replace(/['"]+/g, "")}</li>
             </ul>
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          <Rating></Rating>
-        </Button>
-        <Button size="small" color="primary">
-          More Info
-        </Button>
+          <Rating/>
       </CardActions>
     </Card>
   );

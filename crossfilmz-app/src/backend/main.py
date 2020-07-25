@@ -119,9 +119,11 @@ def get_movies(platforms=None):
     # return Movie.select_all_movies(), 'Done', '201'
 
 
-@app.route('/add_rating', methods=['GET'])
+@app.route('/add_rating', methods=['POST'])
 # Could also just pass the entire movie object here if that's possible
 # If so, there wouldn't be a need for the movie map
+
+#get userlogin via 
 def add_rating(user_login, movie_title, score):
     user = user_map[user_login]
     movie = movie_map[movie_title]

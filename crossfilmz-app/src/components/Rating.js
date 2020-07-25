@@ -14,10 +14,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function HalfRating() {
   const classes = useStyles();
+  const [value, setValue] = React.useState(0);
 
   return (
     <div className={classes.root}>
-      <Rating name="half-rating" defaultValue={0} precision={0.5} />
+      <Rating
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      />{" "}
     </div>
   );
 }
