@@ -46,6 +46,17 @@ class User:
     def get_ratings(self):
         return self.ratings
 
+    def format_recs(self, recs):
+        new_recs = []
+
+        for key in recs:
+            for rec in recs[key]:
+                if rec not in new_recs:
+                    new_recs.append(rec)
+
+        new_recs = sorted(new_recs, key=lambda x: x[1], reverse=True)
+        return new_recs
+
     def get_recs(self):
         recs = {'Netflix': {}, 'Hulu': {},
                 'Amazon Instant Video': {}, 'Disney+': {}}
@@ -111,12 +122,10 @@ def main():
     user.add_rating(movie2, 5)
     user.add_rating(movie, 3)
     recs = user.get_recs()
-    print('RECS')
-    print(recs)
     filtered_recs = user.filter_recs(recs, ['Netflix'])
-    print('\n\n\n\nFILTERED_RECS')
-    print(filtered_recs)
-
+    formatted_recs = user.format_recs(filtered_recs)
+    print('formatted filtered recs')
+    print(formatted_recs)
 
 if __name__ == "__main__":
     main()

@@ -143,11 +143,11 @@ def add_rating():
 
 @app.route('/get_recs', methods=['GET'])
 def get_recs():
-    user_email = 'samirsherlekar98@gmail.com'
+    user_email = '<email>'
     user = user_map[user_email]
     user_recs = user.get_recs()
-    print(user_recs)
-    return jsonify(user_recs)
+    formatted_recs = user.format_recs(user_recs)
+    return jsonify(formatted_recs)
 
 
 @app.route('/filter_recs', methods=['GET'])
@@ -159,8 +159,9 @@ def filter_recs(user_login, platforms):
     user = user_map(user_login)
     user_recs = user.get_recs()
     filtered_recs = user.filter_recs(user_recs, platforms)
+    formatted_recs = user.format_recs(filtered_recs)
 
-    return jsonify(filtered_recs)
+    return jsonify(formatted_recs)
 
 
 # For local testing
