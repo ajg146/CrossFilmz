@@ -27,27 +27,28 @@ class User:
 
     def add_rating(self, movie, score):
         if score < MIN_SCORE or score > MAX_SCORE:
-            return # Make this be a more informative exception
+            return "# Make this be a more informative exception"
 
         if movie.title not in self.ratings:
             for tag in movie.tags:
                 self.vector[tag] = (self.vector[tag] *
                                     self.rating_count + score) / \
-                                    (self.rating_count + 1) \
-                                    if tag in self.vector else score
+                    (self.rating_count + 1) \
+                    if tag in self.vector else score
             self.rating_count += 1
         else:
             previous_rating = self.ratings[movie.title]
             for tag in movie.tags:
                 self.vector[tag] += (score - previous_rating) / \
-                                    self.rating_count
+                    self.rating_count
         self.ratings[movie.title] = score
 
     def get_ratings(self):
         return self.ratings
 
     def get_recs(self):
-        recs = {'Netflix': {}, 'Hulu': {}, 'Amazon Instant Video': {}, 'Disney+': {}}
+        recs = {'Netflix': {}, 'Hulu': {},
+                'Amazon Instant Video': {}, 'Disney+': {}}
 
         conn, cur = db_ops.open_db_conn()
         sql_command = """
@@ -100,11 +101,13 @@ class User:
         self.rating_count = 0
         self.add_user_to_db()
 
+
 def main():
     user = User('testuser')
     movie = Movie('testmovie', ['Action', 'Drama'], ['Netflix', 'Hulu'])
     user.add_rating(movie, 2)
-    movie2 = Movie('other', ['Action', 'Comedy'], ['Disney+', 'Amazon Instant Video'])
+    movie2 = Movie('other', ['Action', 'Comedy'], [
+                   'Disney+', 'Amazon Instant Video'])
     user.add_rating(movie2, 5)
     user.add_rating(movie, 3)
     recs = user.get_recs()
@@ -113,6 +116,7 @@ def main():
     filtered_recs = user.filter_recs(recs, ['Netflix'])
     print('\n\n\n\nFILTERED_RECS')
     print(filtered_recs)
+
 
 if __name__ == "__main__":
     main()
