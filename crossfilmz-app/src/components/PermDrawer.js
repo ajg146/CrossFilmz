@@ -10,6 +10,7 @@ import Search from "./Search";
 import Shelf from "./Shelf";
 import LoginIcon from "./LoginIcon";
 import ApiButton from "./ApiButton";
+import Recommend from "./Recommend";
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -69,10 +70,11 @@ class PermDrawer extends React.Component {
             <ApiButton text="Amazon" updateMovies={this.updateMovies} />
             <ApiButton text="Hulu" updateMovies={this.updateMovies} />
             <ApiButton text="Disney" updateMovies={this.updateMovies} />
-            
           </List>
           <Divider />
-          <List></List>
+          <List>
+            <Recommend text="Recommend" updateMovies={this.updateMovies} />
+          </List>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
