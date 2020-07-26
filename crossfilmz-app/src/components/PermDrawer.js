@@ -18,8 +18,7 @@ const styles = theme => ({
     display: "flex"
   },
   appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth
+    zIndex: theme.zIndex.drawer + 1
   },
   drawer: {
     width: drawerWidth,
@@ -28,21 +27,18 @@ const styles = theme => ({
   drawerPaper: {
     width: drawerWidth
   },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
+  drawerContainer: {
+    overflow: "auto"
+  },
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(5)
+    padding: theme.spacing(3)
   }
 });
 class PermDrawer extends React.Component {
   state = {
     movies: []
   };
-
-
-
 
   updateMovies = dataFromChild => {
     console.log(dataFromChild);
@@ -55,7 +51,6 @@ class PermDrawer extends React.Component {
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
-            <Search></Search>
             <LoginIcon></LoginIcon>
           </Toolbar>
         </AppBar>
@@ -67,7 +62,8 @@ class PermDrawer extends React.Component {
           }}
           anchor="left"
         >
-          <div className={classes.toolbar} />
+          <Toolbar />
+          <div className={classes.drawerContainer} />
           <Divider />
           <List>
             <ApiButton text="Netflix" updateMovies={this.updateMovies} />
