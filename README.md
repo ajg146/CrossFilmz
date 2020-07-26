@@ -9,6 +9,7 @@
 
 * In one terminal session, start frontend server: `C:\CrossFilmz\crossfilmz-app> yarn start`
 * In another session, start backend server: `C:\CrossFilmz\crossfilmz-app> yarn start-app`
+**If there are any instances of `ImportError`, run `pip install <module-name>` and rerun**
 
 ## Instructions for setting up and running testing frameworks
 ### Backend
