@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState, useEffect } from "react";
 import Rating from "@material-ui/lab/Rating";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -16,13 +16,13 @@ export default function HalfRating(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   useEffect(() => {
-    async function test(){
-    const url = "http://127.0.0.1:5000/get_rating";
-    const response = await fetch(url);
-    const data = await response.json();
-    setValue(data["rating"]);
+    async function test() {
+      const url = "http://127.0.0.1:5000/get_rating";
+      const response = await fetch(url);
+      const data = await response.json();
+      setValue(data["rating"]);
     }
-    test()
+    test();
   });
   return (
     <div className={classes.root}>
