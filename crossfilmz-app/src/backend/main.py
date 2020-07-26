@@ -123,6 +123,11 @@ def get_movies(platforms=None):
     # return Movie.select_all_movies(), 'Done', '201'
 
 
+@app.route('/get_rating', methods=['GET'])
+def get_rating():
+    return jsonify(rating=2)
+
+
 @app.route('/add_rating', methods=['POST'])
 def add_rating():
     user_email = 'samirsherlekar98@gmail.com'

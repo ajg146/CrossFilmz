@@ -74,6 +74,10 @@ class PermDrawer extends React.Component {
           <Divider />
           <List>
             <Recommend text="Recommend" updateMovies={this.updateMovies} />
+            {/* <Recommend text="Netflix" updateMovies={this.updateMovies} />
+            <Recommend text="Amazon" updateMovies={this.updateMovies} />
+            <Recommend text="Hulu" updateMovies={this.updateMovies} />
+            <Recommend text="Disney" updateMovies={this.updateMovies} /> */}
           </List>
         </Drawer>
         <main className={classes.content}>

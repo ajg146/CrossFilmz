@@ -21,7 +21,7 @@ class Shelf extends React.Component {
       return <h1>Click button to load movies</h1>;
     }
     return (
-      <div class="basic-grid">
+      <div className="basic-grid">
         {this.state.allmovies.map(eachMovie => (
           <MovieCard
             class="card"

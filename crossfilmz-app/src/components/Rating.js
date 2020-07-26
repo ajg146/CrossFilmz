@@ -19,7 +19,12 @@ export default function HalfRating(props) {
   return (
     <div className={classes.root}>
       <Rating
-        value={value}
+        value={async () => {
+          const url = "http://127.0.0.1:5000/get_rating";
+          const response = await fetch(url);
+          const data = await response.json();
+          return data;
+        }}
         onChange={async (event, newValue) => {
           setValue(newValue);
           const requestOptions = {
