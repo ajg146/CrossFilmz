@@ -77,8 +77,6 @@ def authorize():
     session.permanent = True
 
     email = dict(session)['profile']['email']
-    user_email = email
-    print(user_email)
     if email not in user_map:
         add_user(email)
 
@@ -121,7 +119,7 @@ def get_movies(platforms=None):
 
 @app.route('/get_rating', methods=['POST'])
 def get_rating(title=None):
-    user_email = 'apeiffer11@gmail.com'
+    user_email = 'samirsherlekar98@gmail.com'
     user = user_map[user_email]
     title = request.get_json()['title']
 
@@ -134,7 +132,7 @@ def get_rating(title=None):
 
 @app.route('/add_rating', methods=['POST'])
 def add_rating():
-    user_email = 'apeiffer11@gmail.com'
+    user_email = 'samirsherlekar98@gmail.com'
     user = user_map[user_email]
     movie_data = request.get_json()
     # genre and score recieved as ["'Amazon Instant Video', 'iTunes', 'Google Play', 'Hulu'"]
@@ -149,7 +147,7 @@ def add_rating():
 
 @app.route('/get_recs', methods=['GET'])
 def get_recs():
-    user_email = 'apeiffer11@gmail.com'
+    user_email = 'samirsherlekar98@gmail.com'
     user = user_map[user_email]
     user_recs = user.get_recs()
     formatted_recs = user.format_recs(user_recs)
