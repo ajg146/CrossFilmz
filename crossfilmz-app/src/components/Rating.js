@@ -17,8 +17,15 @@ export default function HalfRating(props) {
   const [value, setValue] = React.useState(0);
   useEffect(() => {
     async function test() {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: props.title
+        })
+      };
       const url = "http://127.0.0.1:5000/get_rating";
-      const response = await fetch(url);
+      const response = await fetch(url,requestOptions);
       const data = await response.json();
       setValue(data["rating"]);
     }
