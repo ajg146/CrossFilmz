@@ -50,7 +50,7 @@ user_email = ""
 @login_required
 def hello_world():
     email = dict(session)['profile']['email']
-    return f'Hello, you are logge in as {email}!'
+    return f'Hello, you are logged in as {email}!'
 
 
 @app.route('/login')
@@ -121,13 +121,17 @@ def get_movies(platforms=None):
 
 
 @app.route('/get_rating', methods=['GET'])
-def get_rating():
-    return jsonify(rating=2)
+def get_rating(title=None):
+    user_email = 'apeiffer11@gmail.com'
+    user = user_map[user_email]
+
+    if title is not None:
+        return jsonify({'rating': user.ratings[title]})
 
 
 @app.route('/add_rating', methods=['POST'])
 def add_rating():
-    user_email = 'samirsherlekar98@gmail.com'
+    user_email = 'apeiffer11@gmail.com'
     user = user_map[user_email]
     movie_data = request.get_json()
     # genre and score recieved as ["'Amazon Instant Video', 'iTunes', 'Google Play', 'Hulu'"]
@@ -142,7 +146,7 @@ def add_rating():
 
 @app.route('/get_recs', methods=['GET'])
 def get_recs():
-    user_email = 'samirsherlekar98@gmail.com'
+    user_email = 'apeiffer11@gmail.com'
     user = user_map[user_email]
     user_recs = user.get_recs()
     formatted_recs = user.format_recs(user_recs)
