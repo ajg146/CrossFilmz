@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function HalfRating() {
+export default function HalfRating(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -20,10 +20,25 @@ export default function HalfRating() {
     <div className={classes.root}>
       <Rating
         value={value}
-        onChange={(event, newValue) => {
+        onChange={async (event, newValue) => {
           setValue(newValue);
+          const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              title: props.title,
+              genre: props.tags,
+              platform: props.platform,
+              score: newValue
+            })
+          };
+          console.log(requestOptions);
+          const url = "http://127.0.0.1:5000/add_rating";
+          const response = await fetch(url, requestOptions);
+          const data = await response.json();
+          console.log(data);
         }}
-      />{" "}
+      ></Rating>
     </div>
   );
 }

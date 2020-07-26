@@ -128,14 +128,17 @@ def add_rating():
     user_email = 'samirsherlekar98@gmail.com'
     user = user_map[user_email]
     movie_data = request.get_json()
+    #genre and score recieved as ["'Amazon Instant Video', 'iTunes', 'Google Play', 'Hulu'"]
+    tags = movie_data['genre'].replace("'", "").split(", ")
+    platforms = movie_data['platform'].replace("'", "").split(", ")
     movie = Movie(movie_data['title'],
-                  movie_data['genre'],
-                  movie_data['platform'])
+                  tags,
+                  platforms)
     print(movie.title)
-    print(movie.tags)
+    print(movie.tags[0])
     print(movie.availability)
     user.add_rating(movie, movie_data['score'])
-    return 'Done', 201
+    return jsonify('Done', 201)
 
 
 @app.route('/get_recs', methods=['GET'])

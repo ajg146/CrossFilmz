@@ -41,7 +41,7 @@ export default function ImgMediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-          <Rating/>
+          <Rating title = {props.title} tags = {props.tags} platform = {props.platform}/>
       </CardActions>
     </Card>
   );
