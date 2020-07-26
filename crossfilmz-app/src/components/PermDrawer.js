@@ -81,7 +81,7 @@ class PermDrawer extends React.Component {
           </List>
         </Drawer>
         <main className={classes.content}>
-          <div className={classes.toolbar} />
+          <Toolbar />
           <Shelf movies_to_render={this.state.movies} />
         </main>
       </div>
