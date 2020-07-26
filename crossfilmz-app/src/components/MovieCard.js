@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 
 export default function ImgMediaCard(props) {
   const classes = useStyles();
+
 
   return (
     <Card className={classes.root}>
@@ -41,7 +42,11 @@ export default function ImgMediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-          <Rating title = {props.title} tags = {props.tags} platform = {props.platform}/>
+        <Rating
+          title={props.title}
+          tags={props.tags}
+          platform={props.platform}
+        />
       </CardActions>
     </Card>
   );
