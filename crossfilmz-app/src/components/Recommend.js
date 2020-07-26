@@ -17,13 +17,7 @@ class Recommend extends React.Component {
           const url = "http://127.0.0.1:5000/get_recs";
           const response = await fetch(url);
           const data = await response.json();
-          var finalEntry = [];
-          console.log(data);
-
-          for (const [key, value] of Object.entries(data)) {
-            finalEntry = finalEntry.concat(data[key].map(x => x[0]));
-          }
-          console.log(finalEntry);
+          const finalEntry = data.map(x => x[0]);
           this.props.updateMovies(finalEntry);
         }}
       >

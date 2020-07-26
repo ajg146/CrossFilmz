@@ -148,7 +148,7 @@ def add_rating():
 
 @app.route('/get_recs', methods=['GET'])
 def get_recs():
-    user_email = '<email>'
+    user_email = 'samirsherlekar98@gmail.com'
     user = user_map[user_email]
     user_recs = user.get_recs()
     formatted_recs = user.format_recs(user_recs)
