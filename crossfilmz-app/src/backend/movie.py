@@ -55,6 +55,7 @@ class Movie:
             poster = r[3]
 
         db_ops.close_db_conn(conn)
+        print(Movie.filter_duplicates(rows))
         return Movie.filter_duplicates(rows)
 
     @staticmethod

@@ -119,9 +119,6 @@ def get_movies(platforms=None):
     if platforms is not None:
         return jsonify(Movie.select_some_movies(platforms))
 
-    return jsonify(Movie.select_all_movies())
-    # return Movie.select_all_movies(), 'Done', '201'
-
 
 @app.route('/get_rating', methods=['GET'])
 def get_rating():
@@ -139,9 +136,6 @@ def add_rating():
     movie = Movie(movie_data['title'],
                   tags,
                   platforms)
-    print(movie.title)
-    print(movie.tags[0])
-    print(movie.availability)
     user.add_rating(movie, movie_data['score'])
     return jsonify('Done', 201)
 

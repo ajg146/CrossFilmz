@@ -40,6 +40,10 @@ class PermDrawer extends React.Component {
   state = {
     movies: []
   };
+
+
+
+
   updateMovies = dataFromChild => {
     console.log(dataFromChild);
     this.setState({ movies: dataFromChild });
