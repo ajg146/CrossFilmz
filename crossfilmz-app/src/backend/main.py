@@ -154,17 +154,15 @@ def get_recs():
     return jsonify(formatted_recs)
 
 
-@app.route('/filter_recs', methods=['GET'])
-def filter_recs(user_login, platforms):
-    for platform in platforms:
-        if platform not in valid_platforms:
-            return 'Invalid Platform', 500
-
-    user = user_map(user_login)
+@app.route('/filter_recs', methods=['POST'])
+@cross_origin(origin='*')
+def filter_recs():
+    user_email = 'samirsherlekar98@gmail.com'
+    user_platform = request.get_json()['platform']
+    user = user_map[user_email]
     user_recs = user.get_recs()
-    filtered_recs = user.filter_recs(user_recs, platforms)
+    filtered_recs = user.filter_recs(user_recs, user_platform)
     formatted_recs = user.format_recs(filtered_recs)
-
     return jsonify(formatted_recs)
 
 

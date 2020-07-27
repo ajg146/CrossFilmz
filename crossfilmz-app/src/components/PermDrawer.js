@@ -11,7 +11,7 @@ import Shelf from "./Shelf";
 import LoginIcon from "./LoginIcon";
 import ApiButton from "./ApiButton";
 import Recommend from "./Recommend";
-
+import RecommendPlatform from "./RecommendPlatform";
 const drawerWidth = 240;
 const styles = theme => ({
   root: {
@@ -74,10 +74,26 @@ class PermDrawer extends React.Component {
           <Divider />
           <List>
             <Recommend text="Recommend" updateMovies={this.updateMovies} />
-            {/* <Recommend text="Netflix" updateMovies={this.updateMovies} />
-            <Recommend text="Amazon" updateMovies={this.updateMovies} />
-            <Recommend text="Hulu" updateMovies={this.updateMovies} />
-            <Recommend text="Disney" updateMovies={this.updateMovies} /> */}
+            <RecommendPlatform
+              text="Suggest Netflix"
+              platform = "Netflix"
+              updateMovies={this.updateMovies}
+            />
+            <RecommendPlatform
+              text="Suggest Amazon"
+              platform = "Amazon Instant Video"
+              updateMovies={this.updateMovies}
+            />
+            <RecommendPlatform
+              text="Suggest Hulu"
+              platform = "Hulu"
+              updateMovies={this.updateMovies}
+            />
+            <RecommendPlatform
+              text="Suggest Disney+"
+              platform = "Disney+"
+              updateMovies={this.updateMovies}
+            />            
           </List>
         </Drawer>
         <main className={classes.content}>
