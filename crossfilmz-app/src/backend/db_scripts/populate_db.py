@@ -16,7 +16,7 @@ def get_availability(imdb_id):
 
     headers = {
         'x-rapidapi-host': 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com',
-        'x-rapidapi-key': # 'ifthereare1000+requestsonmykeytheychargemycreditcard'
+        'x-rapidapi-key':  'ifthereare1000+requestsonmykeytheychargemycreditcard'
     }
 
     response = requests.request("GET", url, headers=headers,
