@@ -75,6 +75,8 @@ class User:
                 # These strips shouldn't cause any issues, but be sure to check
                 # them if any bugs arise
                 platform = platform.strip('\r').strip(']\n').strip('\'')
+                if platform not in recs:
+                    continue
                 recs[platform][title] = movie_score
 
         return recs
