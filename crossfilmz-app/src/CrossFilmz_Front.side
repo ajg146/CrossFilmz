@@ -1,0 +1,153 @@
+{
+  "id": "2df4d2ac-684b-4349-b48e-8beafa1f799e",
+  "version": "2.0",
+  "name": "CrossFilmz_Front",
+  "url": "http://localhost:3000",
+  "tests": [{
+    "id": "199b8245-0d89-4169-b675-d6e6f66d6a42",
+    "name": "CrossFilmz:TopText",
+    "commands": [{
+      "id": "62d491d5-4c65-4da2-93ca-a631d37f01a6",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "60cda7f0-2fa2-453c-9f3a-785489f948af",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "67b0ea40-5256-439c-bb09-e447a3478770",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/header/div/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Rendering movies from : Netflix')]", "xpath:innerText"]
+      ],
+      "value": "Rendering movies from :"
+    }, {
+      "id": "3d80d53d-85d4-4531-b08e-f0cc0d26305f",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=.MuiPaper-root:nth-child(1) .MuiCardMedia-root",
+      "targets": [
+        ["css=.MuiPaper-root:nth-child(1) .MuiCardMedia-root", "css:finder"],
+        ["xpath=//img[@alt='Contemplative Reptile']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/div/main/div[2]/div/button/img", "xpath:idRelative"],
+        ["xpath=//button/img", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "1f45c6ef-d681-46da-aaa4-bb74e9d05756",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiList-root:nth-child(4) > .MuiButtonBase-root:nth-child(1) > .MuiListItemIcon-root",
+      "targets": [
+        ["css=.MuiList-root:nth-child(4) > .MuiButtonBase-root:nth-child(1) > .MuiListItemIcon-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/ul/div/div", "xpath:idRelative"],
+        ["xpath=//ul/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7feb44ae-bb84-4c96-8f50-95786fb42ec4",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/header/div/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Rendering movies from : Netflix')]", "xpath:innerText"]
+      ],
+      "value": "Rendering movies from : Netflix"
+    }, {
+      "id": "a485d217-f581-4289-a167-832dedadd8ed",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiList-root:nth-child(4) > .MuiButtonBase-root:nth-child(2) .MuiListItemIcon-root",
+      "targets": [
+        ["css=.MuiList-root:nth-child(4) > .MuiButtonBase-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/ul/div[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Amazon')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "efa07747-624f-4e1e-b175-3471712a1fcd",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/header/div/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Rendering movies from : Netflix')]", "xpath:innerText"]
+      ],
+      "value": "Rendering movies from : Amazon"
+    }, {
+      "id": "874d57db-108a-4cf8-88e5-e3c568159107",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiList-root:nth-child(4) > .MuiButtonBase-root:nth-child(3) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiList-root:nth-child(4) > .MuiButtonBase-root:nth-child(3) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/ul/div[3]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Hulu')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ddaab1e1-99e3-44b8-9adb-e68d1da789ac",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h3",
+      "targets": [
+        ["css=.MuiList-root:nth-child(4) > .MuiButtonBase-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/ul/div[2]", "xpath:idRelative"],
+        ["xpath=//ul/div[2]", "xpath:position"]
+      ],
+      "value": "Rendering movies from : Hulu"
+    }, {
+      "id": "e0e32f26-d9f2-40d6-a4d1-a94824247380",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiList-root:nth-child(4) > .MuiButtonBase-root:nth-child(4) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiList-root:nth-child(4) > .MuiButtonBase-root:nth-child(4) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/ul/div[4]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Disney')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bd8a1ab4-2b95-4e82-90ad-bd561c210efe",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/header/div/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Rendering movies from : Netflix')]", "xpath:innerText"]
+      ],
+      "value": "Rendering movies from : Disney"
+    }]
+  }],
+  "suites": [{
+    "id": "ac3bc312-61ef-426c-a47d-5553ab0c964b",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["199b8245-0d89-4169-b675-d6e6f66d6a42"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}
