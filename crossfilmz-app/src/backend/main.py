@@ -151,6 +151,14 @@ def add_rating():
     return jsonify('Done', 201)
 
 
+@app.route('/get_user_ratings', methods=['GET'])
+def get_user_ratings():
+    user_email = 'samirsherlekar98@gmail.com'
+    user = user_map[user_email]
+    user_ratings = user.get_full_ratings()
+    return jsonify(user_ratings)
+
+
 @app.route('/get_recs', methods=['GET'])
 def get_recs():
     user_email = 'samirsherlekar98@gmail.com'

@@ -46,6 +46,21 @@ class User:
     def get_ratings(self):
         return self.ratings
 
+    def get_full_ratings(self):
+        conn, cur = db_ops.open_db_conn()
+        full_ratings = {}
+
+        for rating in self.ratings:
+            sql_command = """
+                SELECT * FROM movies
+                WHERE title = ?"""
+            cur.execute(sql_command, (rating,))
+
+            full_ratings[rating] = cur.fetchone()
+
+        db_ops.close_db_conn(conn)
+        return full_ratings
+
     def format_recs(self, recs):
         new_recs = []
 
@@ -122,10 +137,9 @@ def main():
     user.add_rating(movie2, 5)
     user.add_rating(movie, 3)
     recs = user.get_recs()
-    filtered_recs = user.filter_recs(recs, ['Netflix'])
-    formatted_recs = user.format_recs(filtered_recs)
-    print('formatted filtered recs')
-    print(formatted_recs)
+    ratings = user.get_full_ratings()
+    print('RATINGS')
+    print(ratings)
 
 
 if __name__ == "__main__":
