@@ -4,6 +4,7 @@ import sqlite3
 import json
 import requests
 
+
 def get_availability(imdb_id):
     url = 'https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/idlookup'
 
@@ -15,12 +16,13 @@ def get_availability(imdb_id):
 
     headers = {
         'x-rapidapi-host': 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com',
-        'x-rapidapi-key': # 'ifthereare1000+requestsonmykeytheychargemycreditcard'
+        'x-rapidapi-key':   # ifthereare1000+requestsonmykeytheychargemycreditcard'
     }
 
     response = requests.request("GET", url, headers=headers,
                                 params=querystring).json()
     return response
+
 
 def get_tags(movie):
     api_key = 'ed7bc645'
@@ -31,6 +33,7 @@ def get_tags(movie):
 
     response = requests.get(url, params=params).json()
     return response
+
 
 def main():
     with open('sample_movies.txt') as f:

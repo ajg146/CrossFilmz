@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, \
+                  session, jsonify
 from movie import Movie
 from flask_cors import CORS, cross_origin
 from user import User
@@ -45,7 +46,9 @@ movie_map = {}
 valid_platforms = ['Netflix', 'Hulu', 'Amazon Instant Video', 'Disney+']
 user_email = ""
 
-# Routing! Whatever app.route() contains is the href of a link, the end of the URL.
+
+# Routing! Whatever app.route() contains is the href of a link,
+# the end of the URL.
 @app.route('/')
 @login_required
 def hello_world():
@@ -69,10 +72,12 @@ def authorize():
     resp = google.get('userinfo')
     user_info = resp.json()
     user = oauth.google.userinfo()  # uses openid endpoint to fetch user info
-    # Here you use the profile/user data that you got and query your database find/register the user
+    # Here you use the profile/user data that you got and
+    # query your database find/register the user
     # and set ur own data in the session not the profile from google
     session['profile'] = user_info
-    # make the session permanant so it keeps existing after broweser gets closed
+    # make the session permanant so it keeps existing
+    # after broweser gets closed
     session.modified = True
     session.permanent = True
 
@@ -135,7 +140,8 @@ def add_rating():
     user_email = 'samirsherlekar98@gmail.com'
     user = user_map[user_email]
     movie_data = request.get_json()
-    # genre and score recieved as ["'Amazon Instant Video', 'iTunes', 'Google Play', 'Hulu'"]
+    # genre and score recieved as
+    # ["'Amazon Instant Video', 'iTunes', 'Google Play', 'Hulu'"]
     tags = movie_data['genre'].replace("'", "").split(", ")
     platforms = movie_data['platform'].replace("'", "").split(", ")
     movie = Movie(movie_data['title'],

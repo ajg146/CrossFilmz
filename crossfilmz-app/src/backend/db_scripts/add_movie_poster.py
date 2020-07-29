@@ -9,6 +9,7 @@ query_string = {
     't': ''
 }
 
+
 def main():
     conn, cur = db_ops.open_db_conn()
 

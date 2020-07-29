@@ -1,6 +1,7 @@
 import sqlite3
 import db_ops
 
+
 # Print movie titles in a way that's easy to view
 def pretty_print_movies(movies):
     for movie in movies:
@@ -90,7 +91,8 @@ class Movie:
 # FOR VALIDATION:
 # def main():
 #     pretty_print_movies(Movie.select_some_movies('Netflix'))
-#     pretty_print_movies(Movie.select_some_movies(['Netflix', 'Amazon Instant Video']))
+#     pretty_print_movies(Movie.select_some_movies(['Netflix',
+#                                                   'Amazon Instant Video']))
 #
 # if __name__ == "__main__":
 #     main()

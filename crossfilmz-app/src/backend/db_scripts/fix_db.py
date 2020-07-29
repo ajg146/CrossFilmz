@@ -1,10 +1,12 @@
 import db_ops
 import sqlite3
 
+
 def main():
     conn, cur = db_ops.open_db_conn()
 
-    # For testing out the script (have to create a test table called testmovies)
+    # For testing out the script
+    # (have to create a test table called testmovies)
     # sql_command = """
     #     INSERT INTO testmovies
     #     (title, tags)
