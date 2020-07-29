@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, \
-                  session, jsonify
+    session, jsonify
 from movie import Movie
 from flask_cors import CORS, cross_origin
 from user import User

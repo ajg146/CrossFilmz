@@ -18,7 +18,7 @@ class Recommend extends React.Component {
           const response = await fetch(url);
           const data = await response.json();
           const finalEntry = data.map(x => x[0]);
-          this.props.updateMovies(finalEntry);
+          this.props.updateMovies(finalEntry, this.props.text);
         }}
       >
         <ListItemIcon>

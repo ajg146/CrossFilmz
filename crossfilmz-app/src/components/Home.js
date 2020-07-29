@@ -4,11 +4,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import AllInclusiveIcon from "@material-ui/icons/AllInclusive";
 
-class ApiButton extends React.Component {
-  state = {
-    movies: []
-  };
-
+class Home extends React.Component {
   render() {
     return (
       <ListItem
@@ -19,7 +15,7 @@ class ApiButton extends React.Component {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              platforms: [this.props.text]
+              platforms: [""]
             })
           };
           console.log(requestOptions);
@@ -38,4 +34,4 @@ class ApiButton extends React.Component {
   }
 }
 
-export default ApiButton;
+export default Home;

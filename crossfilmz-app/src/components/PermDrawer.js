@@ -12,7 +12,8 @@ import LoginIcon from "./LoginIcon";
 import ApiButton from "./ApiButton";
 import Recommend from "./Recommend";
 import RecommendPlatform from "./RecommendPlatform";
-const drawerWidth = 240;
+import Home from "./Home";
+const drawerWidth = 260;
 const styles = theme => ({
   root: {
     display: "flex"
@@ -37,13 +38,16 @@ const styles = theme => ({
 });
 class PermDrawer extends React.Component {
   state = {
-    movies: []
+    movies: [],
+    source: ""
   };
 
-  updateMovies = dataFromChild => {
+  updateMovies = (dataFromChild, title) => {
     console.log(dataFromChild);
-    this.setState({ movies: dataFromChild });
+    console.log(title);
+    this.setState({ movies: dataFromChild, source: title });
   };
+
   render() {
     const { classes } = this.props;
     return (
@@ -51,6 +55,9 @@ class PermDrawer extends React.Component {
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
+            <h1>CrossFilmz</h1>
+            <h3>Rendering movies from : {this.state.source}</h3>
+            <Home text="Home" updateMovies={this.updateMovies} />
             <LoginIcon></LoginIcon>
           </Toolbar>
         </AppBar>
@@ -73,27 +80,30 @@ class PermDrawer extends React.Component {
           </List>
           <Divider />
           <List>
-            <Recommend text="Recommend" updateMovies={this.updateMovies} />
+            <Recommend
+              text="All Recommendations"
+              updateMovies={this.updateMovies}
+            />
             <RecommendPlatform
               text="Suggest Netflix"
-              platform = "Netflix"
+              platform="Netflix"
               updateMovies={this.updateMovies}
             />
             <RecommendPlatform
               text="Suggest Amazon"
-              platform = "Amazon Instant Video"
+              platform="Amazon Instant Video"
               updateMovies={this.updateMovies}
             />
             <RecommendPlatform
               text="Suggest Hulu"
-              platform = "Hulu"
+              platform="Hulu"
               updateMovies={this.updateMovies}
             />
             <RecommendPlatform
               text="Suggest Disney+"
-              platform = "Disney+"
+              platform="Disney+"
               updateMovies={this.updateMovies}
-            />            
+            />
           </List>
         </Drawer>
         <main className={classes.content}>
